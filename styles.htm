@@ -1,0 +1,62 @@
+<html>
+
+<div id='mm' style="font-family: 'Courier New', monospace;">
+</div>
+
+<script type="text/javascript">
+
+var body = document.querySelector('#mm');
+var star = prompt('Input odd number:');
+var trim = (star - (star % 3)) / 15;
+var row = star * 1;
+
+mm();
+
+
+function mm()
+{
+    for(var i = 0; i < row; i++)
+	{
+		var text = '';
+		for(var j = 0; j < row - i ; j++)
+		{
+			text += '-';
+		}
+
+		for(var j = 0; j < star ; j++)
+		{
+			text += '*';
+		}
+
+		for(var j = 0; j < i; j++)
+		{
+			text += '-';
+		}
+
+		text = text.substr(0, text.length - trim);
+
+		text += reverseString(text).substr(trim, text.length);
+
+		text = text.substr(0, text.length - 1);
+
+		text = text + reverseString(text);
+
+		text = text +  '----' + text + '----';
+
+		body.innerText += text + '\n';
+	}
+
+
+}
+
+
+function reverseString(str) {
+  if (str === "")
+    return "";
+  else
+    return reverseString(str.substr(1)) + str.charAt(0);
+}
+
+</script>
+
+</html>
